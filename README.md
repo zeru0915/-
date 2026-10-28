@@ -10,7 +10,7 @@
 
 | 项目 | 值 |
 | --- | --- |
-| 安装包 | [`TodoReminder-debug.apk`](./TodoReminder-debug.apk)（6.62 MB） |
+| 安装包 | [`TodoReminder-debug.apk`](https://github.com/zeru0915/-/releases/tag/v1.0)（6.62 MB） |
 | 包名 | `com.example.todoreminder` |
 | 版本 | 1.0（versionCode 1） |
 | 支持系统 | Android 8.0 及以上（minSdk 26，targetSdk 35） |
