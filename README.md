@@ -140,33 +140,5 @@ $env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
 **数据存在哪里？**
 本机 SQLite（`todo.db`），不联网、不上传；卸载应用会一并清空。
 
-**能上架应用商店吗？**
-不能——当前是 debug 签名。要发布需用自己的 keystore 重新签 release 包：
 
-```powershell
-keytool -genkeypair -v -keystore keystore.jks -alias todo -keyalg RSA -keysize 2048 -validity 10000
-```
-
-```kotlin
-// app/build.gradle.kts
-android {
-    signingConfigs {
-        create("release") {
-            storeFile = file("../keystore.jks")
-            storePassword = System.getenv("KEYSTORE_PASSWORD")
-            keyAlias = System.getenv("KEY_ALIAS")
-            keyPassword = System.getenv("KEY_PASSWORD")
-        }
-    }
-    buildTypes {
-        release { signingConfig = signingConfigs.getByName("release") }
-    }
-}
-```
-
-keystore 与密码请勿提交到版本库（使用环境变量注入）。
-
-**想释放磁盘空间？**
-`.toolchain/` 约 0.96 GB、`~/.gradle` 缓存约 1.4 GB、`TodoReminder/app/build/` 约 44 MB。删除 `.toolchain` 与 `app/build` 后仍可正常使用已打好的 APK，但需要重新配置工具链才能再次构建。
-# -
 研讨课作业(vibecoding的安卓端app)
